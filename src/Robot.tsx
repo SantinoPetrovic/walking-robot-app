@@ -21,4 +21,4 @@ const Robot = (
   return;
 }
 
-export default Robot
+export default Robot;
