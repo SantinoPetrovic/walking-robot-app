@@ -23,7 +23,7 @@ const executeRobotCommands = (
           case 'E': x += 1; break;
           case 'W': x -= 1; break;
         }
-        if (x >= room.width || y >= room.height) {
+        if (x < 0 || x >= room.width || y < 0 || y >= room.height) {
           throw new Error('Robot walked out of room! Throwing this error.');
         }
         break;
