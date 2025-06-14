@@ -18,12 +18,12 @@ const executeRobotCommands = (
         break;
       case 'F':
         switch (direction) {
-          case 'N': y += 1; break;
-          case 'S': y -= 1; break;
+          case 'N': y -= 1; break;
+          case 'S': y += 1; break;
           case 'E': x += 1; break;
           case 'W': x -= 1; break;
         }
-        if (x < 1 || x >= room.width || y < 1 || y >= room.height) {
+        if (x >= room.width || y >= room.height) {
           throw new Error('Robot walked out of room! Throwing this error.');
         }
         break;
