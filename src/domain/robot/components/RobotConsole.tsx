@@ -23,6 +23,11 @@ const RobotConsole = () => {
       return;
     }
 
+    if (roomWidth < startX || roomHeight < startY ) {
+      setResult('Error: Robot and its position is out of room.');
+      return;
+    }
+
     try {
       const room: Room = { width: roomWidth, height: roomHeight };
       const position: Position = { x: startX, y: startY, direction: startDir };
@@ -39,14 +44,14 @@ const RobotConsole = () => {
 
       <div>
         <label>Room Size (width height): </label>
-        <input type="number" value={roomWidth} onChange={(e) => setRoomWidth(Number(e.target.value))} />
-        <input type="number" value={roomHeight} onChange={(e) => setRoomHeight(Number(e.target.value))} />
+        <input type="number" min={1} value={roomWidth} onChange={(e) => setRoomWidth(Number(e.target.value))} />
+        <input type="number" min={1} value={roomHeight} onChange={(e) => setRoomHeight(Number(e.target.value))} />
       </div>
 
       <div>
         <label>Start Position (x y direction): </label>
-        <input type="number" value={startX} onChange={(e) => setStartX(Number(e.target.value))} />
-        <input type="number" value={startY} onChange={(e) => setStartY(Number(e.target.value))} />
+        <input type="number" min={1} value={startX} onChange={(e) => setStartX(Number(e.target.value))} />
+        <input type="number" min={1} value={startY} onChange={(e) => setStartY(Number(e.target.value))} />
         <select value={startDir} onChange={(e) => setStartDir(e.target.value as Direction)}>
           {directions.map((dir) => (
             <option key={dir} value={dir}>
